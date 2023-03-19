@@ -18,6 +18,7 @@ ADD https://truststore.pki.rds.amazonaws.com/global/global-bundle.pem /usr/local
 RUN update-ca-certificates
 
 COPY .tool-versions /root/
+COPY entrypoint.sh /
 
 RUN while read -r plugin _version; do test -d ~/.asdf/plugins/"$plugin" || asdf plugin add "$plugin"; done < .tool-versions
 RUN asdf install
@@ -32,7 +33,7 @@ RUN tf version
 RUN apt-get -q -y autoremove
 RUN find /var/cache/apt /var/lib/apt/lists /var/log -type f -delete
 
-STOPSIGNAL SIGINT
+ENTRYPOINT [ "/entrypoint.sh" ]
 
 LABEL \
   maintainer="Piotr Roszatycki <piotr.roszatycki@gmail.com>" \

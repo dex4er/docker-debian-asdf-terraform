@@ -28,8 +28,9 @@ Additional tools:
 
 ## Stop Signal
 
-This container is intended to run Terraform then the stop signal is `SIGINT` so
-Terraform can do graceful shutdown.
+This container is intended to run Terraform then it's entrypoint propagates
+`SIGTERM` signal to all child processes so the Terraform can do a graceful
+shutdown.
 
 ## Tags
 
