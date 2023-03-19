@@ -1,0 +1,30 @@
+version: 0.1
+runtimes:
+  enabled:
+    - python@3.10.8
+    - go@1.19.5
+    - node@18.12.1
+actions:
+  enabled:
+    - trunk-announce
+    - trunk-check-pre-push
+    - trunk-fmt-pre-commit
+    - trunk-cache-prune
+    - trunk-upgrade-available
+cli:
+  version: 1.6.1
+lint:
+  enabled:
+    - yamllint@1.29.0
+    - actionlint@1.6.23
+    - dotenv-linter@3.3.0
+    - git-diff-check@SYSTEM
+    - gitleaks@8.16.1
+    - hadolint@2.12.0
+    - markdownlint@0.33.0
+    - prettier@2.8.4
+plugins:
+  sources:
+    - id: trunk
+      ref: v0.0.13
+      uri: https://github.com/trunk-io/plugins
