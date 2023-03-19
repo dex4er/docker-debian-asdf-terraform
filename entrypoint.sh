@@ -27,12 +27,18 @@ function finish() {
 ## Run bash interactively on terminal or with command otherwise
 if [[ -t 0 ]]; then
   {
-    bash -i "$@" >/dev/tty </dev/tty
+    if [[ $# -gt 0 ]]; then
+      "$@" >/dev/tty </dev/tty
+    else
+      bash >/dev/tty </dev/tty
+    fi
     kill -TERM $$
   } &
 else
   {
-    bash "$@"
+    if [[ $# -gt 0 ]]; then
+      "$@"
+    fi
     kill -TERM $$
   } &
 fi
