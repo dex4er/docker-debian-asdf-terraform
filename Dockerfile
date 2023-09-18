@@ -1,6 +1,7 @@
 ## $ docker build --tag dex4er/debian-asdf-terraform --squash .
 
 ARG DEBIAN_ASDF_TAG=latest
+ARG TF_VERSION=v2.8.0
 ARG VERSION=latest
 
 ARG BUILDDATE
@@ -25,7 +26,7 @@ RUN asdf install
 
 RUN asdf list
 
-ADD https://raw.githubusercontent.com/dex4er/tf/main/tf.sh /usr/local/bin/tf
+ADD https://github.com/dex4er/tf/releases/download/${TF_VERSION}/tf-linux-amd64 /usr/local/bin/tf
 RUN chmod +x /usr/local/bin/tf
 
 RUN tf version
