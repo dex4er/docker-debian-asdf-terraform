@@ -12,6 +12,7 @@ FROM dex4er/debian-asdf:${DEBIAN_ASDF_TAG}
 
 ARG BUILDDATE
 ARG REVISION
+ARG TF_VERSION
 ARG VERSION
 
 ADD https://truststore.pki.rds.amazonaws.com/global/global-bundle.pem /usr/local/share/ca-certificates/global-bundle.crt
